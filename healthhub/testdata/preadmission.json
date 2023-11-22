@@ -1,0 +1,11 @@
+{
+    "user": {
+        "username": "",
+        "password": ""
+
+    },
+    "preadmission" : {
+        "fieldA": "",
+        "fieldB": ""
+    }
+}

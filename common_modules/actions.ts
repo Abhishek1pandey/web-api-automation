@@ -1,4 +1,7 @@
 import { Locator, Page, expect } from '@playwright/test';
+import { DateTime } from "luxon";
+
+
 export class Actions {
     constructor(page: Page) {
 
@@ -44,6 +47,19 @@ export class Actions {
     async snapshot(page: Page, identifier: string) {
         var path: string = await page.title() + '-' + identifier + '.png';
         await expect(page).toHaveScreenshot(path, {fullPage: true})
+    }
+
+    /**
+     * Generates data by adding the required number in current date
+     * @param {Page} page
+     * @param {number} numOfDaysinFuture
+     * @memberof Actions
+     */
+    async getDate(numOfDaysinFuture: number) {
+
+        const date = DateTime.now().setZone('local').plus({days: numOfDaysinFuture});
+        return date.toFormat('dd/MM/yyyy');
+        
     }
 
 }

@@ -4,6 +4,11 @@
         "password": ""
 
     },
+    "user1": {
+        "username": "",
+        "password": ""
+
+    },
     "preadmission" : {
         "fieldA": "",
         "fieldB": ""

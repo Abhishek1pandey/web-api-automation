@@ -11,7 +11,8 @@ export default defineConfig({
   timeout: 5 * 60 * 1000,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : 1,
+  snapshotPathTemplate: '{testDir}/screenshots/{testFilePath}/{arg}{ext}',
   reporter: [
     ['html', {outputFile: 'reports/healthhub-reports.html'}],
     ['dot'],
@@ -24,16 +25,28 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
+      name: 'Healthhub_Tests_Chrome',
       testDir: '.',
       snapshotPathTemplate: '{testDir}/screenshots/{testFilePath}/{arg}{ext}',
       use: { ...devices['Desktop Chrome'] ,
+              channel: 'chrome',
               headless: false,
               baseURL: process.env.URL ? process.env.URL : 'https://www.google.com',
               screenshot: 'on',
             },
       
     },
+    /* {
+      name: 'Healthhub_Tests_Safari',
+      testDir: '.',
+      snapshotPathTemplate: '{testDir}/screenshots/{testFilePath}/{arg}{ext}',
+      use: { ...devices['Desktop Safari'] ,
+              headless: false,
+              baseURL: process.env.URL ? process.env.URL : 'https://www.google.com',
+              screenshot: 'on',
+            },
+      
+    }, */
 
     // {
     //   name: 'firefox',

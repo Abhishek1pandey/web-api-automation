@@ -36,6 +36,18 @@ export default defineConfig({
             },
       
     },
+    {
+      name: 'APIM_Test',
+      testDir: 'apim',
+      snapshotPathTemplate: '{testDir}/screenshots/{testFilePath}/{arg}{ext}',
+      use: { 
+              baseURL: process.env.URL ? process.env.URL : 'https://reqres.in',
+              extraHTTPHeaders: {
+                'Accept': 'application/json',
+              },
+            },
+      
+    },
     /* {
       name: 'Healthhub_Tests_Safari',
       testDir: '.',
